@@ -1,1 +1,46 @@
-{}
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Mohamed Ali",
+      "email": "mohamed@example.com",
+      "role": "patient",
+      "phone": "01001234567"
+    },
+    {
+      "id": "2",
+      "name": "Dr. Ahmed Reda",
+      "email": "ahmed@example.com",
+      "role": "doctor",
+      "phone": "01009876543",
+      "specialization": "Cardiology",
+      "experience": 10,
+      "bio": "Expert in heart health and surgeries.",
+      "patients": 120,
+      "availableSlots": [
+        { "day": "Monday", "startTime": "10:00", "endTime": "14:00", "isBooked": true },
+        { "day": "Wednesday", "startTime": "09:00", "endTime": "13:00", "isBooked": false },
+        { "day": "Friday", "startTime": "11:00", "endTime": "15:00", "isBooked": false }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Fatma Ibrahim",
+      "email": "fatma@example.com",
+      "role": "patient",
+      "phone": "01112345678"
+    },
+    {
+      "id": "4",
+      "name": "Sara Ahmed",
+      "email": "sara@example.com",
+      "role": "patient",
+      "phone": "01223456789"
+    }
+  ],
+  "appointments": [
+    { "id": "101", "patientId": "1", "doctorId": "2", "date": "2026-04-10", "timeSlot": "10:30 AM", "status": "pending" },
+    { "id": "102", "patientId": "3", "doctorId": "2", "date": "2026-04-10", "timeSlot": "11:00 AM", "status": "confirmed" },
+    { "id": "103", "patientId": "4", "doctorId": "2", "date": "2026-04-11", "timeSlot": "01:00 PM", "status": "pending" }
+  ]
+}
