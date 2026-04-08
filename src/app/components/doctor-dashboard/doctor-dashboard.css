@@ -3,7 +3,7 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
-  background: #2C0A1E;
+  background: #F8F9FD;
 }
 
 *, *::before, *::after {
@@ -13,45 +13,39 @@
 }
 
 /* ── Color Palette ── */
+/* ── Modern Palette (Inspired by Caredoc) ── */
 :root {
-  --rose:        #B5194E;   /* primary — deep rose */
-  --rose-dark:   #8B1240;   /* hover / banner */
-  --rose-soft:   #F8E8EF;   /* light bg tints */
-  --rose-mid:    #E8779A;   /* avatars / accents */
-  --plum:        #2C0A1E;   /* sidebar bg */
-  --plum-light:  #3F1030;   /* sidebar hover */
-  --cream:       #FDF8FB;   /* page bg */
-  --white:       #FFFFFF;
-  --text-dark:   #1C0D15;
-  --text-mid:    #5A3D4A;
-  --text-muted:  #A08090;
-  --green:       #1E7D45;
-  --green-soft:  #E6F4EC;
-  --amber:       #B45309;
-  --amber-soft:  #FEF3C7;
-  --blue:        #1D4ED8;
-  --blue-soft:   #EFF6FF;
-  --radius:      16px;
-  --radius-sm:   10px;
-  --radius-xs:   6px;
-  --shadow:      0 2px 16px rgba(181,25,78,0.08);
+  --primary:        #7D66D9;   /* الموف الأساسي في الصورة */
+  --primary-soft:   #F3F0FF;   /* خلفية خفيفة للموف */
+  --primary-dark:   #634EB8;   
+  
+  --bg-page:        #F8F9FD;   /* لون الخلفية الرمادي المايل لأزرق خفيف */
+  --sidebar-bg:     #FFFFFF;   /* السايد بار في المودرن ديزاين غالباً بيبقى أبيض */
+  
+  --text-main:      #1F1D2B;   /* أسود شيك */
+  --text-muted:     #9A9AB0;   /* رمادي للكلام الفرعي */
+  
+  --white:          #FFFFFF;
+  --accent-orange:  #FF9F6A;   /* للـ Badges أو الـ Alerts */
+  --accent-blue:    #50B5FF;
+  
+  --radius-lg:      24px;      /* الحواف في الصورة دائرية جداً */
+  --radius-md:      16px;
+  --shadow-sm:      0 4px 20px rgba(125, 102, 217, 0.05);
 }
-
 /* ── Layout ── */
 .dashboard-wrapper {
   display: flex;
   width: 100%;
   min-height: 100vh;
-  background: var(--cream);
+  background:#F8F9FD;
 }
 
 /* ══════════════════════════════
    SIDEBAR
 ══════════════════════════════ */
 .sidebar {
-  width: 230px;
   min-height: 100vh;
-  background: var(--plum);
   display: flex;
   flex-direction: column;
   padding: 28px 0;
@@ -59,6 +53,9 @@
   position: sticky;
   top: 0;
   height: 100vh;
+  background: var(--primary); 
+  border-right: 1px solid #F1F1F5;
+  width: 260px;
 }
 
 .sidebar-logo {
@@ -95,12 +92,13 @@
 }
 
 .nav-item {
+  color: var(--text-muted);
+  margin: 4px 20px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   gap: 13px;
   padding: 12px 16px;
-  border-radius: var(--radius-sm);
-  color: rgba(255,255,255,0.5);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -114,9 +112,9 @@
 }
 
 .nav-item.active {
-  background: var(--rose);
-  color: white;
-  box-shadow: 0 4px 14px rgba(181,25,78,0.35);
+  background: var(--primary-soft);
+  color: var(--primary);
+  box-shadow: none;
 }
 
 .sidebar-footer {
@@ -199,19 +197,19 @@
 }
 
 .search-bar {
+  background: #F1F1F5;
+  border: none;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   gap: 10px;
-  background: white;
-  border: 1.5px solid #EDD5E2;
-  border-radius: 28px;
   padding: 9px 18px;
   color: var(--text-muted);
   transition: border-color .2s;
 }
 
 .search-bar:focus-within {
-  border-color: var(--rose);
+  border-color: var(--primary);
 }
 
 .search-bar input {
@@ -239,8 +237,8 @@
 }
 
 .notif-btn:hover {
-  background: var(--rose-soft);
-  border-color: var(--rose);
+  background: var(--primary);
+  border-color: var(--primary-soft);
 }
 
 .notif-dot {
@@ -261,16 +259,18 @@
   gap: 16px;
   margin-bottom: 28px;
 }
-
+.stat-card, .profile-card, .appointments-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: none; /* شيل الـ border */
+  box-shadow: var(--shadow-sm);
+}
 .stat-card {
-  background: white;
-  border-radius: var(--radius);
   padding: 22px 20px;
   display: flex;
   align-items: center;
   gap: 16px;
   border: 1.5px solid transparent;
-  box-shadow: var(--shadow);
   transition: transform .2s, box-shadow .2s;
 }
 
@@ -343,7 +343,7 @@
 
 .profile-banner {
   height: 80px;
-  background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%);
+  background: linear-gradient(135deg, #A78BFA 0%, #7D66D9 100%);
   position: relative;
 }
 
@@ -460,16 +460,17 @@
   line-height: 1.7;
   margin-bottom: 18px;
 }
-
+.btn-edit, .btn-confirm {
+  background: var(--primary);
+  border-radius: 12px;
+  font-weight: 600;
+}
 .btn-edit {
   width: 100%;
   padding: 11px;
-  background: var(--rose);
   color: white;
   border: none;
-  border-radius: var(--radius-sm);
   font-size: 14px;
-  font-weight: 700;
   cursor: pointer;
   transition: all .2s;
   letter-spacing: 0.2px;
@@ -507,10 +508,11 @@
 
 .filter-tabs {
   display: flex;
-  gap: 6px;
-  background: var(--rose-soft);
-  padding: 4px;
-  border-radius: 24px;
+  gap: 8px;
+  background: #F1F1F5; /* لون خلفية هادي زي الصورة */
+  padding: 6px;
+  border-radius: 40px; /* حواف دائرية جداً */
+  border: 1px solid #E2E2EA;
 }
 
 .tab {

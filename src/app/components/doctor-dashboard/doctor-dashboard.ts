@@ -55,10 +55,6 @@ export class DoctorDashboard implements OnInit {
     this.activeFilter = status;
   }
 
-  getPatientName(patientId: string): string {
-    return this.patientNames[patientId] || '...'; // ← ضيف الميثود دي
-  }
-
   get filteredAppointments() {
     if (this.activeFilter === 'all') return this.appointments;
     return this.appointments.filter((a) => a.status === this.activeFilter);
@@ -81,5 +77,24 @@ export class DoctorDashboard implements OnInit {
       .join('')
       .toUpperCase()
       .slice(0, 2);
+  }
+  // جوه كلاس الـ Component
+  addSlot(day: string, start: string, end: string) {
+    if (!day || !start || !end) {
+      alert('برجاء إدخال كافة تفاصيل الموعد');
+      return;
+    }
+
+    const newSlot = {
+      day: day,
+      startTime: start,
+      endTime: end,
+      isBooked: false, // الموعد الجديد بيبقى متاح طبعاً
+    };
+
+    // إضافة الموعد الجديد لمصفوفة الدكتور
+    this.doctor?.availableSlots.push(newSlot);
+
+    // ملحوظة: لو الداتا جاية من JSON Server، هتحتاجي تبعتي POST request هنا
   }
 }

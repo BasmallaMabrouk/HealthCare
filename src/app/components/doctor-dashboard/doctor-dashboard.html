@@ -1,6 +1,5 @@
 <div class="dashboard-wrapper">
 
-  <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-logo">
       <div class="logo-icon">
@@ -13,66 +12,49 @@
 
     <nav class="sidebar-nav">
       <a class="nav-item active" href="#">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11-8v10zm0-18v6h8V3h-8z"/></svg>
         Dashboard
       </a>
       <a class="nav-item" href="#">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
         Appointments
       </a>
-      <a class="nav-item" href="#">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        Patients
-      </a>
-      <a class="nav-item" href="#">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-        Messages
-      </a>
-      <a class="nav-item" href="#">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-        Schedule
-      </a>
     </nav>
 
     <div class="sidebar-footer">
-      <div class="doctor-mini-profile" *ngIf="doctor">
-        <div class="avatar-sm">{{ getInitials(doctor.name) }}</div>
-        <div>
-          <div class="mini-name">{{ doctor.name }}</div>
-          <div class="mini-spec">{{ doctor.specialization }}</div>
+      @if (doctor) {
+        <div class="doctor-mini-profile">
+          <div class="avatar-sm">{{ getInitials(doctor.name) }}</div>
+          <div>
+            <div class="mini-name">{{ doctor.name }}</div>
+            <div class="mini-spec">{{ doctor.specialization }}</div>
+          </div>
         </div>
-      </div>
+      }
     </div>
   </aside>
 
-  <!-- Main Content -->
   <main class="main-content">
 
-    <!-- Top Bar -->
     <header class="topbar">
       <div class="topbar-left">
         <h1 class="page-title">Doctor Dashboard</h1>
-        <p class="page-date">Monday, 7 April 2026</p>
+        <p class="page-date">Thursday, 9 April 2026</p>
       </div>
       <div class="topbar-right">
         <div class="search-bar">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
           <input type="text" placeholder="Search patient..." />
         </div>
-        <div class="notif-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
-          <span class="notif-dot"></span>
-        </div>
       </div>
     </header>
 
-    <!-- Stats Row -->
     <section class="stats-row">
       <div class="stat-card stat-primary">
         <div class="stat-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
         </div>
-        <div class="fo">
+        <div>
           <span class="stat-num">{{ totalAppointments }}</span>
           <span class="stat-label">Total Appointments</span>
         </div>
@@ -95,51 +77,29 @@
           <span class="stat-label">Pending</span>
         </div>
       </div>
-      <div class="stat-card stat-details">
-        <div class="stat-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        </div>
-        <div class="stat-details">
-          <span class="stat-num">{{ totalAppointments }}</span>
-          <span class="stat-label">Patients Today</span>
-        </div>
-      </div>
     </section>
 
-    <!-- Doctor Profile + Appointments -->
     <section class="content-grid">
 
-      <!-- Doctor Profile Card -->
-      <div class="profile-card" *ngIf="doctor">
-        <div class="profile-banner"></div>
-        <div class="profile-body">
-            
-          <div class="avatar-lg">{{ getInitials(doctor.name) }}</div>
-          <h2 class="profile-name">{{ doctor.name }}</h2>
-          <p class="profile-spec">{{ doctor.specialization }}</p>
-          <div class="profile-tags">
-            <span class="tag">{{ doctor.experience }} yrs exp</span>
-          </div>
-          <div class="profile-stats">
-            <div class="p-stat">
-              <span class="p-stat-num">{{ totalAppointments }}</span>
-              <span class="p-stat-label">Appointments</span>
+      @if (doctor) {
+        <div class="profile-card">
+          <div class="profile-banner"></div>
+          <div class="profile-body">
+            <div class="avatar-lg">{{ getInitials(doctor.name) }}</div>
+            <h2 class="profile-name">{{ doctor.name }}</h2>
+            <p class="profile-spec">{{ doctor.specialization }}</p>
+            <div class="profile-tags">
+              <span class="tag">{{ doctor.experience }} yrs exp</span>
             </div>
-            <div class="p-stat-divider"></div>
-            <div class="p-stat">
-              <span class="p-stat-num">{{ doctor.patients }}</span>
-              <span class="p-stat-label">Patients</span>
-            </div>
+            <p class="profile-bio">{{ doctor.bio }}</p>
+            <button class="btn-edit">Edit Profile</button>
           </div>
-          <p class="profile-bio">{{ doctor.bio }}</p>
-          <button class="btn-edit">Edit Profile</button>
         </div>
-      </div>
+      }
 
-      <!-- Appointments -->
       <div class="appointments-card">
         <div class="card-header">
-          <h2 class="card-title">Appointments</h2>
+          <h2 class="card-title">Recent Appointments</h2>
           <div class="filter-tabs">
             <button class="tab" [class.active]="activeFilter === 'all'" (click)="filterAppts('all')">All</button>
             <button class="tab" [class.active]="activeFilter === 'pending'" (click)="filterAppts('pending')">Pending</button>
@@ -148,41 +108,67 @@
         </div>
 
         <div class="appt-list">
-          <div class="appt-item" *ngFor="let appt of filteredAppointments">
-            <div class="appt-avatar">{{ getInitials(appt.patientId) }}</div>
-            <div class="appt-avatar">{{ getInitials(getPatientName(appt.patientId)) }}</div>
-            <div class="appt-info">
-              <span class="appt-name">{{ patientNames[appt.patientId] || 'Unknown Patient' }}</span>
-              <span class="appt-meta">{{ appt.date }} · {{ appt.timeSlot }}</span>
+          @for (appt of filteredAppointments; track appt.id) {
+            <div class="appt-item">
+              <div class="appt-avatar">{{ getInitials(patientNames[appt.patientId]) }}</div>
+              <div class="appt-info">
+                <span class="appt-name">{{ patientNames[appt.patientId] || 'Loading...' }}</span>
+                <span class="appt-meta">{{ appt.date }} · {{ appt.timeSlot }}</span>
+              </div>
+              <span class="status-badge" [class]="appt.status">{{ appt.status }}</span>
+              <div class="appt-actions">
+                @if (appt.status === 'pending') {
+                  <button class="btn-confirm" (click)="changeStatus(appt.id, 'confirmed')">Confirm</button>
+                }
+                @if (appt.status !== 'cancelled') {
+                  <button class="btn-cancel" (click)="changeStatus(appt.id, 'cancelled')">Cancel</button>
+                }
+              </div>
             </div>
-            <span class="status-badge" [ngClass]="appt.status">{{ appt.status }}</span>
-            <div class="appt-actions">
-              <button class="btn-confirm" *ngIf="appt.status === 'pending'" (click)="changeStatus(appt.id, 'confirmed')">Confirm</button>
-              <button class="btn-cancel" *ngIf="appt.status !== 'cancelled'" (click)="changeStatus(appt.id, 'cancelled')">Cancel</button>
-            </div>
+          } @empty {
+            <p style="padding: 20px; text-align: center; color: #666;">No appointments found.</p>
+          }
+        </div>
+      </div>
+
+    </section>
+
+    @if (doctor) {
+      <section class="schedule-section">
+        <div class="schedule-header">
+          <h2 class="card-title">Available Schedule</h2>
+          
+          <div class="add-slot-form" style="display: flex; gap: 12px; align-items: center;">
+            <select #newDay class="tab" style="padding: 6px 12px; border: 1px solid #ddd; border-radius: 6px;">
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+            </select>
+            <input #startTime type="time" class="tab" style="padding: 6px; border: 1px solid #ddd; border-radius: 6px;">
+            <input #endTime type="time" class="tab" style="padding: 6px; border: 1px solid #ddd; border-radius: 6px;">
+            <button class="btn-outline" (click)="addSlot(newDay.value, startTime.value, endTime.value)">
+              + Add Slot
+            </button>
           </div>
         </div>
-      </div>
 
-    </section>
-
-    <!-- Schedule Strip -->
-    <section class="schedule-section" *ngIf="doctor">
-      <div class="schedule-header">
-        <h2 class="card-title">Available Schedule</h2>
-        <button class="btn-outline">+ Add Slot</button>
-      </div>
-      <div class="slot-list">
-        <div class="slot-card" *ngFor="let slot of doctor.availableSlots"
-             [class.booked]="slot.isBooked" [class.free]="!slot.isBooked">
-          <div class="slot-day">{{ slot.day }}</div>
-          <div class="slot-time">{{ slot.startTime }} – {{ slot.endTime }}</div>
-          <span class="slot-badge" [class.booked-badge]="slot.isBooked" [class.free-badge]="!slot.isBooked">
-            {{ slot.isBooked ? 'Booked' : 'Available' }}
-          </span>
+        <div class="slot-list">
+          @for (slot of doctor.availableSlots; track $index) {
+            <div class="slot-card" [class.booked]="slot.isBooked" [class.free]="!slot.isBooked">
+              <div class="slot-day">{{ slot.day }}</div>
+              <div class="slot-time">{{ slot.startTime }} – {{ slot.endTime }}</div>
+              <span class="slot-badge" [class.booked-badge]="slot.isBooked" [class.free-badge]="!slot.isBooked">
+                {{ slot.isBooked ? 'Booked' : 'Available' }}
+              </span>
+            </div>
+          } @empty {
+             <p style="width: 100%; text-align: center; grid-column: 1 / -1; padding: 20px;">No slots defined yet.</p>
+          }
         </div>
-      </div>
-    </section>
+      </section>
+    }
 
   </main>
 </div>
