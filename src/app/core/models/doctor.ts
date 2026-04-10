@@ -14,4 +14,6 @@ export interface Doctor extends User {
   patients: number;
   availableSlots: TimeSlot[];
   rating?: number;
+  reviewCount?: number;
+  createdAt?: string;
 }

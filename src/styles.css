@@ -1,6 +1,191 @@
-* , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* Global Styles - White + Plum/Mauve Theme */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@500;600&display=swap');
+
+:root {
+  /* Plum / Mauve Palette */
+  --plum:          #5C2D6E;
+  --plum-dark:     #3D1A4A;
+  --plum-light:    #7A4090;
+  --plum-soft:     #EDE4F3;
+  --plum-mist:     #F5EFF9;
+  --plum-glow:     rgba(92, 45, 110, 0.12);
+
+  --mauve:         #9B72B0;
+  --mauve-light:   #C4A8D8;
+  --mauve-soft:    #E8D8F0;
+
+  --accent:        #B5194E;
+  --accent-soft:   rgba(181, 25, 78, 0.1);
+
+  /* Backgrounds - Light */
+  --bg-main:       #F8F4FC;
+  --bg-white:      #FFFFFF;
+  --bg-card:       #FFFFFF;
+  --bg-sidebar:    var(--plum-dark);
+
+  /* Text */
+  --text-dark:     #1E0A2E;
+  --text-mid:      #4A3558;
+  --text-muted:    #9080A0;
+  --text-light:    #FFFFFF;
+  --text-on-white: #2A1040;
+
+  /* Borders */
+  --border:        rgba(92, 45, 110, 0.12);
+  --border-mid:    rgba(92, 45, 110, 0.22);
+
+  /* Shadows */
+  --shadow-sm:     0 2px 8px rgba(92, 45, 110, 0.08);
+  --shadow-md:     0 4px 20px rgba(92, 45, 110, 0.12);
+  --shadow-lg:     0 8px 40px rgba(92, 45, 110, 0.16);
+  --shadow-plum:   0 4px 20px rgba(92, 45, 110, 0.25);
+
+  /* Status */
+  --success:       #1A9E6A;
+  --success-soft:  rgba(26, 158, 106, 0.1);
+  --warning:       #D4820A;
+  --warning-soft:  rgba(212, 130, 10, 0.1);
+  --danger:        #C8364A;
+  --danger-soft:   rgba(200, 54, 74, 0.1);
+
+  /* Legacy compat */
+  --primary-color:   var(--plum);
+  --primary-hover:   var(--plum-dark);
+  --accent-color:    var(--success);
+  --danger-color:    var(--danger);
+  --border-color:    var(--border);
+  --bg-dark:         var(--plum-dark);
+  --text-primary:    var(--text-dark);
+  --text-secondary:  var(--text-muted);
+
+  --font-body:     'DM Sans', sans-serif;
+  --font-display:  'Playfair Display', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { height: 100%; }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #FDF6F9;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: var(--mauve-light); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--plum-light); }
+
+/* Material Icons */
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Buttons */
+.btn {
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-family: var(--font-body);
+}
+
+.btn-primary {
+  background: var(--plum);
+  color: white;
+  box-shadow: var(--shadow-plum);
+}
+
+.btn-primary:hover {
+  background: var(--plum-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(92, 45, 110, 0.35);
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.btn-icon:hover {
+  color: var(--plum);
+  background: var(--plum-glow);
+}
+
+/* Badges */
+.badge {
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-success {
+  background: var(--success-soft);
+  color: var(--success);
+  border: 1px solid rgba(26, 158, 106, 0.2);
+}
+
+.badge-warning {
+  background: var(--warning-soft);
+  color: var(--warning);
+  border: 1px solid rgba(212, 130, 10, 0.2);
+}
+
+.badge-danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid rgba(200, 54, 74, 0.2);
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
 }

@@ -4,6 +4,6 @@ export interface Appointment {
   doctorId: string;
   date: string;
   timeSlot: string;
-  status: 'pending' | 'confirmed' | 'cancelled';
+  status: 'pending' | 'confirmed' | 'cancelled' | 'completed';
   notes?: string;
 }
