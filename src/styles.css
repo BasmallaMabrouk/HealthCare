@@ -1,23 +1,37 @@
-:root {
-  /* Core Palette from reference */
-  --primary: #b03060;        
-  --primary-light: #d64a8a;
-  --primary-dark: #821c44;
-  --primary-soft: #fdf2f7;   
-  
-  --bg: #fdf6f9;             /* Rose Background */
-  --surface: #ffffff;
-  --sidebar-bg: #4a152c;     /* Deep Plum Sidebar */
-  --sidebar-text: #e8d0dc;
-  
-  --text: #2d1b24;           
-  --text-muted: #8e7a84;
-  --border: #f2e1e9;
-  
-  --radius: 16px;            
-  --shadow: 0 8px 24px rgba(74, 21, 44, 0.06);
-}
 
+:root {
+  /* ── Plum/Mauve Theme ── */
+  --plum:          #5C2D6E;
+  --plum-dark:     #3D1A4A;
+  --plum-light:    #7A4090;
+  --plum-soft:     #EDE4F3;
+  --plum-mist:     #F5EFF9;
+  --mauve-light:   #C4A8D8;
+
+  --bg-main:       #F8F4FC;
+  --bg-card:       #FFFFFF;
+  --text-dark:     #1E0A2E;
+  --text-muted:    #9080A0;
+  --shadow-sm:     0 2px 8px rgba(92, 45, 110, 0.08);
+
+  /* ── Your project's variables mapped to real values ── */
+  --primary:       #5C2D6E;
+  --primary-light: #7A4090;
+  --primary-dark:  #3D1A4A;
+  --primary-soft:  #F5EFF9;
+
+  --bg:            #F8F4FC;
+  --surface:       #FFFFFF;
+  --sidebar-bg:    #3D1A4A;
+  --sidebar-text:  #C4A8D8;
+
+  --text:          #1E0A2E;
+  --text-muted:    #9080A0;
+  --border:        rgba(92, 45, 110, 0.12);
+
+  --radius:        16px;
+  --shadow:        0 2px 8px rgba(92, 45, 110, 0.08);
+}
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
