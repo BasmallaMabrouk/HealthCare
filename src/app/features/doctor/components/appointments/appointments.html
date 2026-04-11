@@ -5,7 +5,7 @@
       <p>Manage your patient visits and schedules</p>
     </div>
     <div class="header-actions">
-      <button class="btn" style="background: var(--bg-card); border: 1px solid var(--border-color);">
+      <button class="btn" style="background: var(--bg-white); border: 1px solid var(--border); color: var(--text-mid);">
         <span class="material-icons">filter_list</span>
         <span>Filter</span>
       </button>
@@ -35,8 +35,12 @@
                   {{ getPatientName(appt.patientId).charAt(0) }}
                 </div>
                 <div>
-                  <p style="font-weight: 600;">{{ getPatientName(appt.patientId) }}</p>
-                  <p style="font-size: 0.7rem; color: var(--text-secondary);">ID: #{{ appt.patientId }}</p>
+                  <p style="font-weight: 600; color: var(--text-dark);">
+                    {{ getPatientName(appt.patientId) }}
+                  </p>
+                  <p style="font-size: 0.7rem; color: var(--text-muted);">
+                    ID: #{{ appt.patientId }}
+                  </p>
                 </div>
               </div>
             </td>
@@ -47,29 +51,42 @@
               </div>
             </td>
             <td>
-              <span [class]="'badge ' + (appt.status === 'confirmed' ? 'badge-success' : appt.status === 'pending' ? 'badge-warning' : 'badge-danger')">
+              <span [class]="'badge ' +
+                (appt.status === 'confirmed' ? 'badge-success' :
+                 appt.status === 'pending'   ? 'badge-warning' : 'badge-danger')">
                 {{ appt.status }}
               </span>
             </td>
             <td>
               <div class="actions-cell">
+                <!-- View Detail -->
+                <a
+                  [routerLink]="['/doctor/appointments', appt.id]"
+                  class="action-btn view-btn"
+                  title="View Details">
+                  <span class="material-icons" style="font-size: 18px;">open_in_new</span>
+                </a>
+
                 @if (appt.status === 'pending') {
-                  <button (click)="changeStatus(appt.id, 'confirmed')" class="action-btn btn-confirm" title="Confirm">
+                  <button
+                    (click)="changeStatus(appt.id, 'confirmed')"
+                    class="action-btn btn-confirm"
+                    title="Confirm">
                     <span class="material-icons" style="font-size: 18px;">check</span>
                   </button>
                 }
-                <button (click)="changeStatus(appt.id, 'cancelled')" class="action-btn btn-cancel" title="Cancel">
+                <button
+                  (click)="changeStatus(appt.id, 'cancelled')"
+                  class="action-btn btn-cancel"
+                  title="Cancel">
                   <span class="material-icons" style="font-size: 18px;">close</span>
-                </button>
-                <button class="action-btn">
-                  <span class="material-icons" style="font-size: 18px;">more_vert</span>
                 </button>
               </div>
             </td>
           </tr>
         } @empty {
           <tr>
-            <td colspan="4" style="padding: 4rem; text-align: center; color: var(--text-secondary); font-style: italic;">
+            <td colspan="4" style="padding: 4rem; text-align: center; color: var(--text-muted); font-style: italic;">
               No appointments found
             </td>
           </tr>

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { DoctorService } from '../../../doctor/services/doctor-service/doctor-service';
 import { Appointment } from '../../../../core/models/appointment';
 
 @Component({
   selector: 'app-doctor-appointments',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './appointments.html',
   styleUrls: ['./appointments.css'],
 })
@@ -23,14 +24,16 @@ export class DoctorAppointmentsComponent implements OnInit {
   }
 
   loadAppointments() {
-    this.doctorService.getDoctorAppointments(this.doctorId).subscribe((appts) => {
-      this.appointments = appts;
-      appts.forEach((a) => {
-        this.doctorService.getPatient(a.patientId).subscribe((p) => {
-          this.patientNames[p.id] = p.name;
+    this.doctorService
+      .getDoctorAppointments(this.doctorId)
+      .subscribe((appts) => {
+        this.appointments = appts;
+        appts.forEach((a) => {
+          this.doctorService.getPatient(a.patientId).subscribe((p) => {
+            this.patientNames[p.id] = p.name;
+          });
         });
       });
-    });
   }
 
   changeStatus(id: string, status: string) {
